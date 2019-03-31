@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace ImmutableObjectLab.Model.Data
 {
     public sealed class Member
     {
-        public Member(int id, string name, string email, List<int> identifiers)
+        [JsonConstructor]
+        public Member(int id, string name, string email, IReadOnlyCollection<int> identifiers)
         {
             this.Id = id;
             this.Name = name;
@@ -16,12 +18,12 @@ namespace ImmutableObjectLab.Model.Data
         {
         }
 
-        public int Id { get; }
+        public int Id { get; set; }
 
-        public string Name { get; }
+        public string Name { get; set; }
 
-        public string Email { get; }
+        public string Email { get; set; }
 
-        public List<int> Identifiers { get; }
+        public IReadOnlyCollection<int> Identifiers { get; set; }
     }
 }
