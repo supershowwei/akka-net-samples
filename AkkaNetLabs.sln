@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupervisorStrategyLab", "Su
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImmutableObjectLab", "ImmutableObjectLab\ImmutableObjectLab.csproj", "{DE82FFEA-B389-4D93-BE47-5B97BE2F4994}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InboxLab", "InboxLab\InboxLab.csproj", "{DDAE1E28-0FFB-4532-9A7B-4F37F096C664}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DE82FFEA-B389-4D93-BE47-5B97BE2F4994}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE82FFEA-B389-4D93-BE47-5B97BE2F4994}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE82FFEA-B389-4D93-BE47-5B97BE2F4994}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDAE1E28-0FFB-4532-9A7B-4F37F096C664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDAE1E28-0FFB-4532-9A7B-4F37F096C664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDAE1E28-0FFB-4532-9A7B-4F37F096C664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDAE1E28-0FFB-4532-9A7B-4F37F096C664}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
