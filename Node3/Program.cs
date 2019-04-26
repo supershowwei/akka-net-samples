@@ -19,7 +19,7 @@ namespace Node3
                             ImmutableHashSet.Create(
                                 new[]
                                 {
-                                    ActorPath.Parse("akka.tcp://cluster-sys@localhost:2551/system/receptionist")
+                                    ActorPath.Parse("akka.tcp://cluster-sys@localhost:2553/system/receptionist")
                                 }))),
                 "client");
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Akka.Actor;
+using Akka.Cluster;
 using Akka.Cluster.Tools.Client;
 using Node1.Actors;
 
