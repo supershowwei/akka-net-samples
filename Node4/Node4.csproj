@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{652CBAAA-DC27-445A-901B-1A9BD0E3C769}</ProjectGuid>
+    <ProjectGuid>{20360E2F-5F41-4B6D-A79D-470606F673AF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SeedNode</RootNamespace>
-    <AssemblyName>SeedNode</AssemblyName>
+    <RootNamespace>Node4</RootNamespace>
+    <AssemblyName>Node4</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -225,18 +225,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actors\HelloActor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Node4\Node4.csproj">
-      <Project>{20360e2f-5f41-4b6d-a79d-470606f673af}</Project>
-      <Name>Node4</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
