@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using Akka.Actor;
 using DispatcherLab.Model.Messages;
 
@@ -8,7 +9,15 @@ namespace DispatcherLab.Actors
     {
         public HelloActor()
         {
-            this.Receive<Who>(who => { Console.WriteLine($"{this.Self.Path}: Hello {who.Name}!!!"); });
+            this.Receive<Who>(
+                who =>
+                    {
+                        //var sender = this.Sender;
+
+                        //new HttpClient().GetAsync(new Uri("abc")).PipeTo(sender);
+
+                        Console.WriteLine($"{this.Self.Path}: Hello {who.Name}!!!");
+                    });
         }
 
         public static Props Props()
