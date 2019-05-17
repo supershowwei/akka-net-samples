@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Threading;
+﻿using System.Threading;
 using Akka.Actor;
-using Akka.Cluster.Tools.Client;
+using Akka.Cluster.Routing;
+using Akka.Routing;
+using Shared.Actors;
 
 namespace Node3
 {
@@ -11,28 +10,20 @@ namespace Node3
     {
         private static void Main(string[] args)
         {
-            var sys = ActorSystem.Create("sys");
+            var sys = ActorSystem.Create("cluster-sys");
 
-            var client = sys.ActorOf(
-                ClusterClient.Props(
-                    ClusterClientSettings.Create(sys)
-                        .WithInitialContacts(
-                            ImmutableHashSet.Create(
-                                new[]
-                                {
-                                    ActorPath.Parse("akka.tcp://cluster-sys@localhost:2551/system/receptionist")
-                                }))),
-                "client");
+            var hello = sys.ActorOf(
+                Props.Create(() => new HelloActor())
+                    .WithRouter(
+                        new ClusterRouterPool(new RoundRobinPool(20), new ClusterRouterPoolSettings(10000, 10, true))),
+                "hello");
 
-            var random = new Random(Guid.NewGuid().GetHashCode());
-
-            do
+            var index = 0;
+            while (true)
             {
-                client.Tell(new ClusterClient.Send("/user/addition", random.Next(10000)));
-
                 Thread.Sleep(1000);
+                hello.Tell(++index);
             }
-            while (true);
         }
     }
 }

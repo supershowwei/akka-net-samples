@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{652CBAAA-DC27-445A-901B-1A9BD0E3C769}</ProjectGuid>
+    <ProjectGuid>{301C7C93-7030-436D-9EE1-39783320F5A5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SeedNode</RootNamespace>
-    <AssemblyName>SeedNode</AssemblyName>
+    <RootNamespace>Shard2</RootNamespace>
+    <AssemblyName>Shard2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -39,8 +39,17 @@
     <Reference Include="Akka.Cluster, Version=1.3.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.Cluster.1.3.12\lib\net45\Akka.Cluster.dll</HintPath>
     </Reference>
+    <Reference Include="Akka.Cluster.Sharding, Version=1.3.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.Cluster.Sharding.1.3.12-beta\lib\net45\Akka.Cluster.Sharding.dll</HintPath>
+    </Reference>
     <Reference Include="Akka.Cluster.Tools, Version=1.3.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.Cluster.Tools.1.3.12\lib\net45\Akka.Cluster.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="Akka.DistributedData, Version=1.3.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.DistributedData.1.3.12-beta\lib\net45\Akka.DistributedData.dll</HintPath>
+    </Reference>
+    <Reference Include="Akka.Persistence, Version=1.3.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Akka.Persistence.1.3.12\lib\net45\Akka.Persistence.dll</HintPath>
     </Reference>
     <Reference Include="Akka.Remote, Version=1.3.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Akka.Remote.1.3.12\lib\net45\Akka.Remote.dll</HintPath>
@@ -62,6 +71,9 @@
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Hyperion, Version=0.9.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hyperion.0.9.8\lib\net45\Hyperion.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
@@ -229,9 +241,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
