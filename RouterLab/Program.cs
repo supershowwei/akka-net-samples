@@ -12,9 +12,11 @@ namespace RouterLab
     {
         private static void Main(string[] args)
         {
-            RoundRobinBroadcast();
+            //RoundRobinBroadcast();
 
             //UseResizer();
+
+            RoundRobinGroup();
         }
 
         private static void RoundRobinBroadcast()
@@ -44,6 +46,23 @@ namespace RouterLab
                 System.Threading.Thread.Sleep(random.Next(10000));
 
                 Console.Clear();
+            }
+        }
+
+        private static void RoundRobinGroup()
+        {
+            var system = ActorSystem.Create("mySys");
+
+            system.ActorOf(HelloActor.Props(), "hello");
+            system.ActorOf(HelloActor.Props(), "hello1");
+
+            var workers = new[] { "/user/hello", "/user/hello1" };
+
+            var router = system.ActorOf(Props.Empty.WithRouter(new RoundRobinGroup(workers)), "hello-group");
+
+            while (Console.ReadKey().Key != ConsoleKey.Escape)
+            {
+                router.Tell(new Who("Johnny"));
             }
         }
     }
