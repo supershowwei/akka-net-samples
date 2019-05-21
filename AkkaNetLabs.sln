@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shard3", "Shard3\Shard3.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{D1780C25-8984-4ECD-8DCB-5FCC118E03A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtLeastOnceDeliveryLab", "AtLeastOnceDeliveryLab\AtLeastOnceDeliveryLab.csproj", "{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{D1780C25-8984-4ECD-8DCB-5FCC118E03A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1780C25-8984-4ECD-8DCB-5FCC118E03A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1780C25-8984-4ECD-8DCB-5FCC118E03A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
