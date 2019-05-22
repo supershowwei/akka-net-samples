@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtLeastOnceDeliveryLab", "AtLeastOnceDeliveryLab\AtLeastOnceDeliveryLab.csproj", "{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtLeastOnceDeliveryReceiver", "AtLeastOnceDeliveryReceiver\AtLeastOnceDeliveryReceiver.csproj", "{4E422561-5820-4453-AE85-C5380F142F9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52AF2EDF-5ADD-4370-9FA0-11650B8DB865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E422561-5820-4453-AE85-C5380F142F9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E422561-5820-4453-AE85-C5380F142F9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E422561-5820-4453-AE85-C5380F142F9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E422561-5820-4453-AE85-C5380F142F9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

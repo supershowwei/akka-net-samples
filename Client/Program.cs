@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using System.Threading;
 using Akka.Actor;
 using Akka.Cluster.Tools.Client;
-using Shared;
+using Shared.Model.Messages;
 
 namespace Client
 {

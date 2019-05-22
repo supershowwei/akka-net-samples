@@ -3,6 +3,7 @@ using Akka.Actor;
 using Akka.Cluster.Sharding;
 using Shared;
 using Shared.Actors;
+using Shared.Model.Messages;
 
 namespace Shard2
 {

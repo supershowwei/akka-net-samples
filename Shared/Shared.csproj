@@ -236,7 +236,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\HelloActor.cs" />
-    <Compile Include="SharedEnvelope.cs" />
+    <Compile Include="Model\Messages\Acknowledgment.cs" />
+    <Compile Include="Model\Messages\ChatMessage.cs" />
+    <Compile Include="Model\Messages\Envelope.cs" />
     <Compile Include="MessageExtractor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

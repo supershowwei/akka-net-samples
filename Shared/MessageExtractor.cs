@@ -1,4 +1,5 @@
 ﻿using Akka.Cluster.Sharding;
+using Shared.Model.Messages;
 
 namespace Shared
 {
