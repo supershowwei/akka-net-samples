@@ -2,11 +2,11 @@
 {
     public sealed class Acknowledgment
     {
-        public Acknowledgment(decimal deliveryId)
+        public Acknowledgment(decimal messageId)
         {
-            this.DeliveryId = deliveryId;
+            this.MessageId = messageId;
         }
 
-        public decimal DeliveryId { get; }
+        public decimal MessageId { get; }
     }
 }

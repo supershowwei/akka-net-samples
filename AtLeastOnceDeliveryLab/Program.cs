@@ -14,8 +14,8 @@ namespace AtLeastOnceDeliveryLab
             var actor = sys.ActorOf(Props.Create<AtLeastOnceActor>(), "atleastonce");
 
             sys.Scheduler.ScheduleTellRepeatedly(
-                TimeSpan.FromSeconds(1),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.Zero,
+                TimeSpan.FromMilliseconds(100),
                 actor,
                 new ChatMessage("Johnny", "Hello"),
                 ActorRefs.NoSender);

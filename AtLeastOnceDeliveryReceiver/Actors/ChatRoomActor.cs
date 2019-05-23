@@ -9,12 +9,12 @@ namespace AtLeastOnceDeliveryReceiver.Actors
     {
         protected override void OnReceive(object message)
         {
-            message.Match().With<Envelope<ChatMessage>>(_ => this.HandlerChatMessage(_));
+            message.Match().With<ReliableDeliveryEnvelope<ChatMessage>>(_ => this.HandlerChatMessage(_));
         }
 
-        private void HandlerChatMessage(Envelope<ChatMessage> envelope)
+        private void HandlerChatMessage(ReliableDeliveryEnvelope<ChatMessage> envelope)
         {
-            this.Sender.Tell(new Acknowledgment(envelope.DeliveryId));
+            this.Sender.Tell(new ReliableDeliveryAck(envelope.DeliveryId));
 
             Console.WriteLine($"({envelope.DeliveryId}){envelope.Message.Name} Say: {envelope.Message.Text}");
         }

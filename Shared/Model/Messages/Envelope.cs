@@ -1,28 +1,15 @@
 ﻿namespace Shared.Model.Messages
 {
-    public sealed class Envelope<TMessage>
+    public sealed class Envelope<T>
     {
-        public Envelope(decimal deliveryId, TMessage message)
+        public Envelope(decimal messageId, T message)
         {
-            this.DeliveryId = deliveryId;
+            this.MessageId = messageId;
             this.Message = message;
         }
 
-        public decimal DeliveryId { get; }
+        public decimal MessageId { get; }
 
-        public TMessage Message { get; }
-    }
-
-    public sealed class SharedEnvelope
-    {
-        public SharedEnvelope(string entityId, object payload)
-        {
-            this.EntityId = entityId;
-            this.Payload = payload;
-        }
-
-        public string EntityId { get; }
-
-        public object Payload { get; }
+        public T Message { get; }
     }
 }

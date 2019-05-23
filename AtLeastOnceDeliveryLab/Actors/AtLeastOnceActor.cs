@@ -22,7 +22,7 @@ namespace AtLeastOnceDeliveryLab.Actors
             message.Match()
                 .With<RedeliveryTick>(this.RedeliverOverdue)
                 .With<ChatMessage>(_ => this.HandleChatMessage(_))
-                .With<Acknowledgment>(_ => this.HandleAcknowledgment(_));
+                .With<ReliableDeliveryAck>(_ => this.HandleAcknowledgment(_));
         }
 
         protected override void OnRecover(object message)
@@ -48,7 +48,7 @@ namespace AtLeastOnceDeliveryLab.Actors
             base.PostStop();
         }
 
-        private void HandleAcknowledgment(Acknowledgment ack)
+        private void HandleAcknowledgment(ReliableDeliveryAck ack)
         {
             Console.WriteLine($"Remove: {ack.DeliveryId}");
 
@@ -62,8 +62,8 @@ namespace AtLeastOnceDeliveryLab.Actors
             this.Send(
                 deliveryId,
                 new Delivery(
-                    ActorPath.Parse("akka.tcp://sys@localhost:2571/user/chatroom"),
-                    new Envelope<ChatMessage>(deliveryId, chatMessage),
+                    ActorPath.Parse("akka.tcp://sys@localhost:2572/user/chatroom"),
+                    new ReliableDeliveryEnvelope<ChatMessage>(deliveryId, chatMessage),
                     DateTime.Now));
         }
 
