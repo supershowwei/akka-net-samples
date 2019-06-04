@@ -10,7 +10,7 @@ namespace PullModeLab.Actors
     public class PoolActor : UntypedActor
     {
         private readonly ActorPath actorPath = ActorPath.Parse("akka.tcp://sys@localhost:2582/user/chatroom");
-        private decimal count;
+        private decimal sequence;
         private ImmutableSortedDictionary<decimal, Envelope<ChatMessage>> queue = ImmutableSortedDictionary<decimal, Envelope<ChatMessage>>.Empty;
 
         protected override void OnReceive(object message)
@@ -21,20 +21,15 @@ namespace PullModeLab.Actors
                 .With<Pull>(this.Deliver);
         }
 
-        protected override void PreStart()
-        {
-            this.Self.Tell(Pull.Instance);
-
-            base.PreStart();
-        }
-
         private void HandleChatMessage(ChatMessage chatMessage)
         {
-            var messageId = ++this.count;
+            this.sequence++;
 
-            Console.WriteLine($"Queue: {messageId}");
+            Console.WriteLine($"Queue: {this.sequence}");
 
-            this.queue = this.queue.SetItem(messageId, new Envelope<ChatMessage>(messageId, chatMessage));
+            if (this.queue.IsEmpty) this.Self.Tell(Pull.Instance);
+
+            this.queue = this.queue.SetItem(this.sequence, new Envelope<ChatMessage>(this.sequence, chatMessage));
         }
 
         private void Acknowledge(Acknowledgment ack)
@@ -50,18 +45,11 @@ namespace PullModeLab.Actors
         {
             var envelop = this.queue.FirstOrDefault();
 
-            if (envelop.Value == null)
-            {
-                Console.WriteLine("Wait envelop");
+            if (envelop.Value == null) return;
 
-                Context.System.Scheduler.ScheduleTellOnce(TimeSpan.FromSeconds(1), this.Self, Pull.Instance, ActorRefs.NoSender);
-            }
-            else
-            {
-                Console.WriteLine($"Send: {envelop.Value.MessageId}");
+            Console.WriteLine($"Send: {envelop.Value.MessageId}");
 
-                Context.ActorSelection(this.actorPath).Tell(envelop.Value);
-            }
+            Context.ActorSelection(this.actorPath).Tell(envelop.Value);
         }
     }
 }
