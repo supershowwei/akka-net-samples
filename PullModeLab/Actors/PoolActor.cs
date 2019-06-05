@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Immutable;
+using System.Collections.Generic;
 using System.Linq;
 using Akka;
 using Akka.Actor;
@@ -10,8 +10,13 @@ namespace PullModeLab.Actors
     public class PoolActor : UntypedActor
     {
         private readonly ActorPath actorPath = ActorPath.Parse("akka.tcp://sys@localhost:2582/user/chatroom");
+        private readonly SortedDictionary<decimal, Envelope<ChatMessage>> queue;
         private decimal sequence;
-        private ImmutableSortedDictionary<decimal, Envelope<ChatMessage>> queue = ImmutableSortedDictionary<decimal, Envelope<ChatMessage>>.Empty;
+
+        public PoolActor()
+        {
+            this.queue = new SortedDictionary<decimal, Envelope<ChatMessage>>();
+        }
 
         protected override void OnReceive(object message)
         {
@@ -23,20 +28,20 @@ namespace PullModeLab.Actors
 
         private void HandleChatMessage(ChatMessage chatMessage)
         {
-            this.sequence++;
+            if (this.queue.Count == 0) this.Self.Tell(Pull.Instance, ActorRefs.NoSender);
 
             Console.WriteLine($"Queue: {this.sequence}");
 
-            if (this.queue.IsEmpty) this.Self.Tell(Pull.Instance);
+            this.sequence++;
 
-            this.queue = this.queue.SetItem(this.sequence, new Envelope<ChatMessage>(this.sequence, chatMessage));
+            this.queue.Add(this.sequence, new Envelope<ChatMessage>(this.sequence, chatMessage));
         }
 
         private void Acknowledge(Acknowledgment ack)
         {
             Console.WriteLine($"Remove: {ack.MessageId}");
 
-            this.queue = this.queue.Remove(ack.MessageId);
+            this.queue.Remove(ack.MessageId);
 
             this.Deliver();
         }
