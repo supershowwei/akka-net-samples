@@ -11,6 +11,7 @@ namespace PullModeLab.Actors
     {
         private readonly ActorPath actorPath = ActorPath.Parse("akka.tcp://sys@localhost:2582/user/chatroom");
         private readonly SortedDictionary<decimal, Envelope<ChatMessage>> queue;
+        private IActorRef remoteActor;
         private decimal sequence;
 
         public PoolActor()
@@ -23,7 +24,15 @@ namespace PullModeLab.Actors
             message.Match()
                 .With<ChatMessage>(_ => this.HandleChatMessage(_))
                 .With<Acknowledgment>(_ => this.Acknowledge(_))
-                .With<Pull>(this.Deliver);
+                .With<Pull>(this.Deliver)
+                .With<Terminated>(
+                    _ =>
+                        {
+                            if (_.ExistenceConfirmed && _.AddressTerminated && _.ActorRef.Path == this.actorPath)
+                            {
+                                this.remoteActor = null;
+                            }
+                        });
         }
 
         private void HandleChatMessage(ChatMessage chatMessage)
@@ -41,6 +50,13 @@ namespace PullModeLab.Actors
         {
             Console.WriteLine($"Remove: {ack.MessageId}");
 
+            if (this.remoteActor == null)
+            {
+                this.remoteActor = this.Sender;
+
+                Context.Watch(this.remoteActor);
+            }
+
             this.queue.Remove(ack.MessageId);
 
             this.Deliver();
@@ -54,7 +70,14 @@ namespace PullModeLab.Actors
 
             Console.WriteLine($"Send: {envelop.Value.MessageId}");
 
-            Context.ActorSelection(this.actorPath).Tell(envelop.Value);
+            if (this.remoteActor != null)
+            {
+                this.remoteActor.Tell(envelop.Value);
+            }
+            else
+            {
+                Context.ActorSelection(this.actorPath).Tell(envelop.Value);
+            }
         }
     }
 }
