@@ -24,8 +24,10 @@ namespace ImmutableObjectLab
         {
             //TestInLiteDB();
             //TestInAutoMapper();
-            TestInJsonNet();
-            //TestInDapper();
+            //TestInJsonNet();
+            TestInDapper();
+
+            Console.ReadKey();
         }
 
         private static void TestInLiteDB()
@@ -120,7 +122,7 @@ WHERE m.MemberNo = 356";
 
             using (var db = new SqlConnection(ConfigurationManager.ConnectionStrings["WantGoo"].ConnectionString))
             {
-                var b = db.ImmutableQuerySingle<Member>(sql);
+                var b = db.QuerySingleAsImmutability<Member>(sql);
             }
         }
     }
