@@ -17,7 +17,7 @@ namespace AtLeastOnceDeliveryLab
                 TimeSpan.Zero,
                 TimeSpan.FromMilliseconds(100),
                 actor,
-                new ChatMessage("Johnny", "Hello"),
+                new ChatMessage("Johnny", "Hello", null),
                 ActorRefs.NoSender);
 
             Console.ReadKey();

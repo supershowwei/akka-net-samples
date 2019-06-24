@@ -24,8 +24,8 @@ namespace ImmutableObjectLab
         {
             //TestInLiteDB();
             //TestInAutoMapper();
-            //TestInJsonNet();
-            TestInDapper();
+            TestInJsonNet();
+            //TestInDapper();
 
             Console.ReadKey();
         }
@@ -101,7 +101,6 @@ namespace ImmutableObjectLab
         {
             var json = "{\"Email\": \"service@wantgoo.com\",\"Name\": \"玩股小俏妞\",\"Identifiers\": [1,2,3]}";
 
-            // 沒有 [JsonConstructor] 的話，預設使用第一個。
             var obj = JsonConvert.DeserializeObject<Member>(json);
         }
 

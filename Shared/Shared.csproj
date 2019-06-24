@@ -239,6 +239,7 @@
     <Compile Include="Model\Messages\Acknowledgment.cs" />
     <Compile Include="Model\Messages\ChatMessage.cs" />
     <Compile Include="Model\Messages\Envelope.cs" />
+    <Compile Include="Model\Messages\OpeningPeriod.cs" />
     <Compile Include="Model\Messages\Pull.cs" />
     <Compile Include="Model\Messages\ReliableDeliveryAck.cs" />
     <Compile Include="Model\Messages\SharedEnvelope.cs" />
