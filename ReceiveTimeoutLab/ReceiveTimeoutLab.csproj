@@ -54,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\HelloActor.cs" />
+    <Compile Include="Messages\IEnvelope.cs" />
+    <Compile Include="Messages\ImMessage.cs" />
+    <Compile Include="Messages\UrMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

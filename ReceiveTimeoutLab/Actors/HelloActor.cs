@@ -1,6 +1,7 @@
 ﻿using System;
 using Akka;
 using Akka.Actor;
+using ReceiveTimeoutLab.Messages;
 
 namespace ReceiveTimeoutLab.Actors
 {
@@ -8,14 +9,15 @@ namespace ReceiveTimeoutLab.Actors
     {
         public HelloActor()
         {
-            this.SetReceiveTimeout(TimeSpan.FromSeconds(5));
+            this.SetReceiveTimeout(TimeSpan.FromSeconds(3));
         }
 
         protected override void OnReceive(object message)
         {
             message.Match()
                 .With<ReceiveTimeout>(_ => { Console.WriteLine("Timeout"); })
-                .With<object>(_ => { Console.WriteLine("receive message"); });
+                .With<IEnvelope>(_ => { Console.WriteLine($"IEnvelope:{_.GetType().Name}"); })
+                .With<UrMessage>(_ => { Console.WriteLine("UrMessage"); });
         }
     }
 }

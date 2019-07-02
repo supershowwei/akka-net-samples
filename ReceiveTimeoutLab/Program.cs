@@ -2,6 +2,7 @@
 using System.Threading;
 using Akka.Actor;
 using ReceiveTimeoutLab.Actors;
+using ReceiveTimeoutLab.Messages;
 
 namespace ReceiveTimeoutLab
 {
@@ -17,9 +18,21 @@ namespace ReceiveTimeoutLab
 
             while (true)
             {
-                Thread.Sleep(random.Next(8) * 1000);
+                Thread.Sleep(random.Next(5) * 1000);
 
-                actor.Tell(string.Empty);
+                IEnvelope envelope = null;
+                switch (random.Next(1000) % 2)
+                {
+                    case 0:
+                        envelope = new ImMessage("abc", 1);
+                        break;
+
+                    case 1:
+                        envelope = new UrMessage("abc", 1);
+                        break;
+                }
+
+                actor.Tell(envelope);
             }
         }
     }
