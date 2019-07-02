@@ -16,7 +16,14 @@ namespace ReceiveTimeoutLab.Actors
         {
             message.Match()
                 .With<ReceiveTimeout>(_ => { Console.WriteLine("Timeout"); })
-                .With<IEnvelope>(_ => { Console.WriteLine($"IEnvelope:{_.GetType().Name}"); })
+                .With<IEnvelope>(
+                    _ =>
+                        {
+                            var a = 1;
+                            var b = 0;
+                            var c = a / b;
+                            Console.WriteLine($"IEnvelope:{_.GetType().Name}");
+                        })
                 .With<UrMessage>(_ => { Console.WriteLine("UrMessage"); });
         }
     }
