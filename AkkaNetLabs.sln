@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PullWorker", "PullWorker\Pu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingLab", "LoggingLab\LoggingLab.csproj", "{320DD3E5-7D14-4C70-B2E0-4808E31969F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiveTimeoutLab", "ReceiveTimeoutLab\ReceiveTimeoutLab.csproj", "{2461F175-EA4D-4E3F-A038-8ACE7929B3B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{320DD3E5-7D14-4C70-B2E0-4808E31969F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320DD3E5-7D14-4C70-B2E0-4808E31969F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320DD3E5-7D14-4C70-B2E0-4808E31969F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2461F175-EA4D-4E3F-A038-8ACE7929B3B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2461F175-EA4D-4E3F-A038-8ACE7929B3B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2461F175-EA4D-4E3F-A038-8ACE7929B3B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2461F175-EA4D-4E3F-A038-8ACE7929B3B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

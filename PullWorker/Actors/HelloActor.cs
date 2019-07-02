@@ -7,6 +7,11 @@ namespace PullWorker.Actors
 {
     public class HelloActor : UntypedActor
     {
+        public HelloActor()
+        {
+            this.SetReceiveTimeout(TimeSpan.FromSeconds(5));
+        }
+
         protected override void OnReceive(object message)
         {
             message.Match().With<ChatMessage>(_ => this.HandleChatMessage(_));
