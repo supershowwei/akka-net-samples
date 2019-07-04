@@ -11,8 +11,28 @@ namespace Client
     {
         private static void Main(string[] args)
         {
-            SendToShard();
+            //SendToShard();
             //SendToCluster();
+            Send();
+        }
+
+        private static void Send()
+        {
+            var sys = ActorSystem.Create("sys");
+
+            var client = sys.ActorSelection("akka.tcp://wantgoo-quoter@localhost:9527/user/quote-provider");
+
+            while (true)
+            {
+                client.Tell("軟體工程師是一種把咖啡因轉成程式碼的裝置，而StackOverflow能有效的加速進程。");
+            }
+
+            //var actor = client.ResolveOne(TimeSpan.FromSeconds(5)).Result;
+
+            //((IInternalActorRef)actor).Stop();
+            //((IInternalActorRef)actor).Start();
+
+            Console.ReadKey();
         }
 
         private static void SendToShard()
