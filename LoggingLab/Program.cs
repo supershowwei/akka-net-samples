@@ -15,6 +15,7 @@ namespace LoggingLab
             var actor = system.ActorOf(Props.Create(() => new TestActor()));
 
             actor.Tell(string.Empty);
+            actor.Tell(string.Empty);
 
             Console.ReadKey();
         }
