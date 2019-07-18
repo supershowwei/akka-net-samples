@@ -13,9 +13,9 @@ namespace BecomeLab.Actors
 
         private void Abc(object message)
         {
-            message.Match().With<int>(_ =>
+            message.Match().With<string>(_ =>
                 {
-                    Console.WriteLine(_);
+                    Console.WriteLine($"{_} on Abc");
 
                     this.Become(this.Def);
                 });
@@ -25,7 +25,7 @@ namespace BecomeLab.Actors
         {
             message.Match().With<string>(_ =>
                 {
-                    Console.WriteLine(_);
+                    Console.WriteLine($"{_} on Def");
 
                     if (_ == "123")
                     {

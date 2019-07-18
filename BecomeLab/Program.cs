@@ -12,11 +12,11 @@ namespace BecomeLab
 
             var actor = sys.ActorOf(Props.Create<TestActor>());
 
-            actor.Tell(1);
+            actor.Tell("111");
 
             Console.ReadKey();
 
-            actor.Tell("111");
+            actor.Tell("222");
 
             Console.ReadKey();
 
@@ -24,8 +24,8 @@ namespace BecomeLab
 
             Console.ReadKey();
 
-            actor.Tell("111");
-            actor.Tell(1);
+            actor.Tell("333");
+            actor.Tell("444");
 
             Console.ReadKey();
         }
